@@ -7,9 +7,11 @@ testing our output file.
 
 ## sort SAM file using samtools 
 
-mapped reads={}  #initalize a dictionary for mapped reads
+uniqe reads={}  #initalize a dictionary for uniqe reads
+observed UMI=[]
 
 #assingn the names of the diffrent columens so its easier to refer to 
+
 Qname= SAM col 1   #will extract UMI using a function
 flag= SAM col 2
 RNAME= SAM col 3
@@ -20,13 +22,16 @@ open and read file line by line:
     parse the SAM line(readline, split and strip)
     cheak if mapped 
     if((flag & 256) != 256):
-                if((flag & 4) != 4):
-                    place in dictionary as a key
-                else:
-                    pass
+        if((flag & 4) != 4):
+            pass
+        else:
+            pass
     Cigar string # write a function and call
-    extract the umi from the Qname
+*** Extract the umi from the Qname  # write a function 
     
+    if UMI not is observed UMI # if the umi in the file not in our set of known UMI's
+        add to set and to dictionary as key
+
 with open output SAM file:
     if known umi is in dictionary
         write to file 
@@ -35,18 +40,10 @@ with open output SAM file:
 
 
 
-    functions 
+    Functions 
 
 def parse_cigar :
-    cstring = []
-    length = ""
-    for char in cigar_string:
-        if char.isdigit():
-            length += char
-        else:
-            operations.append((int(length), char))
-            length = ""
-    return operations
+    ````will formulate````
 
 def extract umi from Qname
     ````will formulate````
