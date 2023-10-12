@@ -1,0 +1,55 @@
+1. Define the problem 
+
+Our initial SAM file has PCR duplicates and we are trying to generate a script to 
+remove PCR based duplicated by passing it through diffrent conditionals and unit 
+testing our output file.
+
+
+## sort SAM file using samtools 
+
+mapped reads={}  #initalize a dictionary for mapped reads
+
+#assingn the names of the diffrent columens so its easier to refer to 
+Qname= SAM col 1   #will extract UMI using a function
+flag= SAM col 2
+RNAME= SAM col 3
+POS= SAM col 4   # cheak pos accounting for soft clipping
+Cigar = SAM col 6        #cheak for soft clipping 
+
+open and read file line by line:
+    parse the SAM line(readline, split and strip)
+    cheak if mapped 
+    if((flag & 256) != 256):
+                if((flag & 4) != 4):
+                    place in dictionary as a key
+                else:
+                    pass
+    Cigar string # write a function and call
+    extract the umi from the Qname
+    
+with open output SAM file:
+    if known umi is in dictionary
+        write to file 
+    else:
+        pass
+
+
+
+    functions 
+
+def parse_cigar :
+    cstring = []
+    length = ""
+    for char in cigar_string:
+        if char.isdigit():
+            length += char
+        else:
+            operations.append((int(length), char))
+            length = ""
+    return operations
+
+def extract umi from Qname
+    ````will formulate````
+
+def cheak for POS accounting for UMI
+    ````will formulate````
