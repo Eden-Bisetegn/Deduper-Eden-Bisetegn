@@ -18,7 +18,7 @@ output=args.output
 UMI=args.UMI
 
 known_umi=[]  #list for known umi
-uniqe_reads={} #dictionary for unique reads /key-value_tup value-
+uniqe_reads={} #dictionary for unique reads /key-value_tup value-not set
 curr_chrom= None #helps to empty out the dictionary after a change in chromosome number
 duplicate_count=0 # counter for duplicate reads 
 
