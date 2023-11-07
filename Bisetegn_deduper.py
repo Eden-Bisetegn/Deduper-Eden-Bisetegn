@@ -5,11 +5,11 @@ import gzip
 import re
 
 def get_args():
-    parser = argparse.ArgumentParser(description="A program to introduce yourself")
+    parser = argparse.ArgumentParser(description="This script can be used to remove duplicate reads from a given sorted sam file inconsideration of 5 prime soft clipping")
     parser.add_argument("-f", "--name", help="input file name", required=True)
     parser.add_argument("-o", "--output", help="output_filename", required=True)
     parser.add_argument("-u", "--UMI", help="UMI file", required=True)
-    parser.add_argument("-h", "--help", help="This script can be used to remove duplicate reads from a given sorted sam file inconsideration of 5 prime soft clipping ",)
+    #parser.add_argument("-h", "--help", help="This script can be used to remove duplicate reads from a given sorted sam file inconsideration of 5 prime soft clipping ",)
     return parser.parse_args()
 
 args=get_args()
@@ -18,7 +18,7 @@ output=args.output
 UMI=args.UMI
 
 known_umi=[]  #list for known umi
-uniqe_reads={} #dictionary for unique reads /key-chrom value-everything else
+uniqe_reads={} #dictionary for unique reads /key-value_tup value-
 curr_chrom= None #helps to empty out the dictionary after a change in chromosome number
 duplicate_count=0 # counter for duplicate reads 
 
